@@ -1,14 +1,12 @@
-
-
 #include <TimeLib.h>
 #include <Wire.h>
 #include <DS1307RTC.h>
 #include "DHT.h"
 
 // Configuration
-int maxTemp = 14;
-int minTemp = 12;
-int bedTimeHour = 10;
+int maxTemp = 11;
+int minTemp = 9;
+int bedTimeHour = 6;
 int wakeTimeHour = 7;
 int preCoolHour = bedTimeHour - 1;
 int preCoolTemp = minTemp - 2;
@@ -35,7 +33,7 @@ void setup()  {
 
   // Configure the relay
   pinMode(relayPin, OUTPUT);
-  turnFridgeOn();
+  turnFridgeOff();
 }
 
 void loop()
@@ -46,13 +44,14 @@ void loop()
   
   displayClock();
   displayTemp();
-  Serial.println("\n\n");  
-
+  
   if (t > maxTemp) {
     turnFridgeOn();
   } else if (t < minTemp) {
-    turnFrigeOff();
+    turnFridgeOff();
   }
+  Serial.println("\n\n");
+
 }
 
 
@@ -60,10 +59,14 @@ void loop()
 
 void turnFridgeOn() {
   digitalWrite(relayPin, HIGH);
+  Serial.print("Fridge is ON");
+  Serial.println("\n");
 }
 
-void turnFrigeOff() {
+void turnFridgeOff() {
   digitalWrite(relayPin, LOW);
+  Serial.print("Fridge is OFF");
+  Serial.println("\n");
 }
 
 void displayTemp() {
