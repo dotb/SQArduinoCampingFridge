@@ -1,2 +1,18 @@
+# Arduino Fridge Controller
 
-Hello World :)
+This fridge controller plugs into the 12v fuse holder of a camping fridge.
+It is controlled by a min and max temperature.
+
+The project we used this for is a 32ltr Engel fridge.
+
+##Working
+* Minimum temperature
+* Maximum temperature
+* Switch Relay
+
+Future feature
+* bedtime programmable, so that 
+ * fridge doesn't turn on over nights
+ * fridge cycles down a bit more before going to sleep and stay cool (I hope)
+ * fridge still turns on if the max temperature is exceeded
+ * sooo much more :)
